@@ -1,0 +1,9 @@
+{
+	"name": "ltconsultdemo-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "880b63bb-8867-4663-97f4-02bffd56c420",
+		"tenantId": "d9ea3aba-81c1-4c31-9ec2-a2c4611bd2ac"
+	}
+}
