@@ -169,7 +169,7 @@
 					{
 						"activity": "copy_ltconsultdemo_AdventureWorksLT_to_adsl_parquet",
 						"dependencyConditions": [
-							"Skipped"
+							"Succeeded"
 						]
 					}
 				],
