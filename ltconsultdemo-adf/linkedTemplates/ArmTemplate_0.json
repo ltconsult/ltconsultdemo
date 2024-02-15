@@ -199,6 +199,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "SalesLT.Address.parquet",
 						"folderPath": "AdventureWorksLT",
 						"fileSystem": "landing"
 					},
@@ -227,12 +228,50 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "SalesLT.Customer.parquet",
 						"folderPath": "AdventureWorksLT",
 						"fileSystem": "landing"
 					},
 					"compressionCodec": "snappy"
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "AddressID",
+						"type": "INT32"
+					},
+					{
+						"name": "AddressLine1",
+						"type": "UTF8"
+					},
+					{
+						"name": "AddressLine2",
+						"type": "UTF8"
+					},
+					{
+						"name": "City",
+						"type": "UTF8"
+					},
+					{
+						"name": "StateProvince",
+						"type": "UTF8"
+					},
+					{
+						"name": "CountryRegion",
+						"type": "UTF8"
+					},
+					{
+						"name": "PostalCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "rowguid",
+						"type": "UTF8"
+					},
+					{
+						"name": "ModifiedDate",
+						"type": "INT96"
+					}
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
@@ -413,7 +452,7 @@
 							{
 								"activity": "copy_ltconsultdemo_AdventureWorksLT_to_adsl_parquet",
 								"dependencyConditions": [
-									"Skipped"
+									"Succeeded"
 								]
 							}
 						],
