@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "copy_ltconsultdemo_AdventureWorksLT_to_adsl_parquet",
+				"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -167,7 +167,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "copy_ltconsultdemo_AdventureWorksLT_to_adsl_parquet",
+						"activity": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
 						"dependencyConditions": [
 							"Succeeded"
 						]
