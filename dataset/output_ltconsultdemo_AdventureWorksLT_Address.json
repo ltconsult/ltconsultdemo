@@ -1,0 +1,23 @@
+{
+	"name": "output_ltconsultdemo_AdventureWorksLT_Address",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ltconsultdemo_AdventureWorksLT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AdventureWorksLT/output"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "AdventureWorksLT",
+				"fileSystem": "landing"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
