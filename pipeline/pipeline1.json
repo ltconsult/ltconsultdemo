@@ -427,9 +427,13 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
@@ -511,7 +515,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "input_ltconsultdemo_AW_CustomerAddress",
+						"referenceName": "output_ltconsultdemo_AW_CustomerAddress",
 						"type": "DatasetReference"
 					}
 				]
