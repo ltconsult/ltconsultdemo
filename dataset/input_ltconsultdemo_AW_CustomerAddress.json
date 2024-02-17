@@ -1,5 +1,5 @@
 {
-	"name": "output_ltconsultdemo_AW_CustomerAddress",
+	"name": "input_ltconsultdemo_AW_CustomerAddress",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ltconsultdemo_SQL_AdventureWorksLT",
