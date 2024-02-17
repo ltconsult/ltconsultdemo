@@ -163,7 +163,7 @@
 				]
 			},
 			{
-				"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Customer",
+				"name": "Copy_to_ADSL_Customer",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -203,159 +203,200 @@
 							{
 								"source": {
 									"name": "CustomerID",
-									"type": "Int32"
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "CustomerID",
-									"type": "Int32"
+									"type": "Int32",
+									"physicalType": "INT_32"
 								}
 							},
 							{
 								"source": {
 									"name": "NameStyle",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "NameStyle",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "BOOLEAN"
 								}
 							},
 							{
 								"source": {
 									"name": "Title",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "Title",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "FirstName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "FirstName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "MiddleName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "MiddleName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "LastName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "LastName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "Suffix",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "Suffix",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "CompanyName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CompanyName",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "SalesPerson",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "SalesPerson",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "EmailAddress",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "EmailAddress",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "Phone",
-									"type": "String"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "Phone",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "PasswordHash",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PasswordHash",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "PasswordSalt",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PasswordSalt",
-									"type": "String"
+									"type": "String",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "rowguid",
-									"type": "Guid"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "rowguid",
-									"type": "Guid"
+									"type": "Guid",
+									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
 									"name": "ModifiedDate",
-									"type": "DateTime"
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "ModifiedDate",
-									"type": "DateTime"
+									"type": "DateTime",
+									"physicalType": "INT_96"
 								}
 							}
-						]
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
 					}
 				},
 				"inputs": [
 					{
 						"referenceName": "input_ltconsultdemo_AW_Customer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "output_ltconsultdemo_AW_Customer",
 						"type": "DatasetReference"
 					}
 				]
@@ -365,7 +406,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Customer",
+						"activity": "Copy_to_ADSL_Customer",
 						"dependencyConditions": [
 							"Succeeded"
 						]
