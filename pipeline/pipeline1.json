@@ -5,7 +5,14 @@
 			{
 				"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Data flow - ltconsultdemo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -167,7 +174,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
+						"activity": "Data flow - ltconsultdemo",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -400,6 +407,26 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Data flow - ltconsultdemo",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": []
