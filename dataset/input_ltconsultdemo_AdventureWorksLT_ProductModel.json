@@ -1,0 +1,43 @@
+{
+	"name": "input_ltconsultdemo_AdventureWorksLT_ProductModel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ltconsultdemo_SQL_AdventureWorksLT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AdventureWorksLT/input"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductModelID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalogDescription",
+				"type": "xml"
+			},
+			{
+				"name": "rowguid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "SalesLT",
+			"table": "ProductModel"
+		}
+	}
+}
