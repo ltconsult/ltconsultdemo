@@ -157,7 +157,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "output_ltconsultdemo_AdventureWorksLT_Address",
+						"referenceName": "output_ltconsultdemo_AW_Address",
 						"type": "DatasetReference"
 					}
 				]
@@ -390,7 +390,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "input_ltconsultdemo_AdventureWorksLT_Customer",
+						"referenceName": "input_ltconsultdemo_AW_Customer",
 						"type": "DatasetReference"
 					}
 				],
@@ -553,18 +553,21 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "input_ltconsultdemo_AdventureWorksLT_CustomerAddress",
+						"referenceName": "output_ltconsultdemo_AW_CustomerAddress",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "input_ltconsultdemo_AdventureWorksLT_CustomerAddress",
+						"referenceName": "output_ltconsultdemo_AW_CustomerAddress",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"folder": {
+			"name": "AdventureWorksLT"
+		},
 		"annotations": []
 	}
 }
