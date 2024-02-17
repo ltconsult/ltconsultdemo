@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "SalesLT.Address.parquet",
+				"fileName": "Address.parquet",
 				"folderPath": "AdventureWorksLT",
 				"fileSystem": "landing"
 			},
