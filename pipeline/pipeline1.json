@@ -402,7 +402,7 @@
 				]
 			},
 			{
-				"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_CustomerAddress",
+				"name": "ltconsultdemo_AW_to_adsl_parquet_CustomerAddress",
 				"type": "Copy",
 				"dependsOn": [
 					{
