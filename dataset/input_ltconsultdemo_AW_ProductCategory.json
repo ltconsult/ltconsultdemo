@@ -1,5 +1,5 @@
 {
-	"name": "input_ltconsultdemo_AdventureWorksLT_ProductCategory",
+	"name": "input_ltconsultdemo_AW_ProductCategory",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ltconsultdemo_SQL_AdventureWorksLT",
