@@ -402,7 +402,7 @@
 				]
 			},
 			{
-				"name": "ltconsultdemo_AW_to_adsl_parquet_CustomerAddress",
+				"name": "Copy_to_ADSL_CustomerAddress",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -553,13 +553,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "output_ltconsultdemo_AW_CustomerAddress",
+						"referenceName": "input_ltconsultdemo_AW_CustomerAddress",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "output_ltconsultdemo_AW_CustomerAddress",
+						"referenceName": "input_ltconsultdemo_AW_CustomerAddress",
 						"type": "DatasetReference"
 					}
 				]
