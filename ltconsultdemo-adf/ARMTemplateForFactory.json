@@ -31,7 +31,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
+						"name": "Copy_to_ADSL_Address",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -179,25 +179,25 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "input_ltconsultdemo_AdventureWorksLT_Address",
+								"referenceName": "input_ltconsultdemo_AW_Address",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "output_ltconsultdemo_AdventureWorksLT_Address",
+								"referenceName": "output_ltconsultdemo_AW_Address",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						]
 					},
 					{
-						"name": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Customer",
+						"name": "Copy_to_ADSL_Customer",
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Address",
+								"activity": "Copy_to_ADSL_Address",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -420,25 +420,25 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "input_ltconsultdemo_AdventureWorksLT_Customer",
+								"referenceName": "input_ltconsultdemo_AW_Customer",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "output_ltconsultdemo_AdventureWorksLT_Customer",
+								"referenceName": "output_ltconsultdemo_AW_Customer",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						]
 					},
 					{
-						"name": "ltconsultdemo_AW_to_adsl_parquet_CustomerAddress",
+						"name": "Copy_to_ADSL_CustomerAddress",
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "ltconsultdemo_AdventureWorksLT_to_adsl_parquet_Customer",
+								"activity": "Copy_to_ADSL_Customer",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -585,14 +585,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "input_ltconsultdemo_AdventureWorksLT_CustomerAddress",
+								"referenceName": "input_ltconsultdemo_AW_CustomerAddress",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "input_ltconsultdemo_AdventureWorksLT_CustomerAddress",
+								"referenceName": "input_ltconsultdemo_AW_CustomerAddress",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -602,18 +602,21 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"folder": {
+					"name": "AdventureWorksLT"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AdventureWorksLT_Address')]",
-				"[concat(variables('factoryId'), '/datasets/output_ltconsultdemo_AdventureWorksLT_Address')]",
-				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AdventureWorksLT_Customer')]",
-				"[concat(variables('factoryId'), '/datasets/output_ltconsultdemo_AdventureWorksLT_Customer')]",
-				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AdventureWorksLT_CustomerAddress')]"
+				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AW_Address')]",
+				"[concat(variables('factoryId'), '/datasets/output_ltconsultdemo_AW_Address')]",
+				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AW_Customer')]",
+				"[concat(variables('factoryId'), '/datasets/output_ltconsultdemo_AW_Customer')]",
+				"[concat(variables('factoryId'), '/datasets/input_ltconsultdemo_AW_CustomerAddress')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_Address')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_Address')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -677,7 +680,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_Customer')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_Customer')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -765,132 +768,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_Address')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ltconsultdemo_AdventureWorksLT",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "AdventureWorksLT/output"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "Address.parquet",
-						"folderPath": "AdventureWorksLT",
-						"fileSystem": "landing"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_Customer')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ltconsultdemo_AdventureWorksLT",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "AdventureWorksLT/output"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "Customer.parquet",
-						"folderPath": "AdventureWorksLT",
-						"fileSystem": "landing"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "AddressID",
-						"type": "INT32"
-					},
-					{
-						"name": "AddressLine1",
-						"type": "UTF8"
-					},
-					{
-						"name": "AddressLine2",
-						"type": "UTF8"
-					},
-					{
-						"name": "City",
-						"type": "UTF8"
-					},
-					{
-						"name": "StateProvince",
-						"type": "UTF8"
-					},
-					{
-						"name": "CountryRegion",
-						"type": "UTF8"
-					},
-					{
-						"name": "PostalCode",
-						"type": "UTF8"
-					},
-					{
-						"name": "rowguid",
-						"type": "UTF8"
-					},
-					{
-						"name": "ModifiedDate",
-						"type": "INT96"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ltconsultdemo_AdventureWorksLT')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('ltconsultdemo_AdventureWorksLT_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('ltconsultdemo_AdventureWorksLT_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ltconsultdemo_SQL_AdventureWorksLT')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('ltconsultdemo_SQL_AdventureWorksLT_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_CustomerAddress')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_CustomerAddress')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -939,7 +817,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_Product')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_Product')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1049,7 +927,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_ProductCategory')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_ProductCategory')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1098,7 +976,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_ProductDescription')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_ProductDescription')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1142,7 +1020,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_ProductModel')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_ProductModel')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1190,7 +1068,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_ProductModelProductDescription')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_ProductModelProductDescription')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1239,7 +1117,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_SalesOrderDetail')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_SalesOrderDetail')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1312,7 +1190,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AdventureWorksLT_SalesOrderHeader')]",
+			"name": "[concat(parameters('factoryName'), '/input_ltconsultdemo_AW_SalesOrderHeader')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1447,7 +1325,102 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_CustomerAddress')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_Address')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ltconsultdemo_AdventureWorksLT",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AdventureWorksLT/output"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "Address.parquet",
+						"folderPath": "AdventureWorksLT",
+						"fileSystem": "landing"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_Customer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ltconsultdemo_AdventureWorksLT",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AdventureWorksLT/output"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "Customer.parquet",
+						"folderPath": "AdventureWorksLT",
+						"fileSystem": "landing"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "AddressID",
+						"type": "INT32"
+					},
+					{
+						"name": "AddressLine1",
+						"type": "UTF8"
+					},
+					{
+						"name": "AddressLine2",
+						"type": "UTF8"
+					},
+					{
+						"name": "City",
+						"type": "UTF8"
+					},
+					{
+						"name": "StateProvince",
+						"type": "UTF8"
+					},
+					{
+						"name": "CountryRegion",
+						"type": "UTF8"
+					},
+					{
+						"name": "PostalCode",
+						"type": "UTF8"
+					},
+					{
+						"name": "rowguid",
+						"type": "UTF8"
+					},
+					{
+						"name": "ModifiedDate",
+						"type": "INT96"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_CustomerAddress')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1513,7 +1486,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_Product')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_Product')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1579,7 +1552,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_ProductCategory')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_ProductCategory')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1645,7 +1618,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_ProductDescription')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_ProductDescription')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1711,7 +1684,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_ProductModel')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_ProductModel')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1777,7 +1750,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_ProductModelProductDescription')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_ProductModelProductDescription')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1843,7 +1816,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_SalesOrderDetail')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_SalesOrderDetail')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1909,7 +1882,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AdventureWorksLT_SalesOrderHeader')]",
+			"name": "[concat(parameters('factoryName'), '/output_ltconsultdemo_AW_SalesOrderHeader')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1973,6 +1946,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ltconsultdemo_AdventureWorksLT')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ltconsultdemo_AdventureWorksLT')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ltconsultdemo_AdventureWorksLT_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ltconsultdemo_AdventureWorksLT_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ltconsultdemo_SQL_AdventureWorksLT')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('ltconsultdemo_SQL_AdventureWorksLT_connectionString')]"
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
