@@ -1,5 +1,5 @@
 {
-	"name": "output_ltconsultdemo_AdventureWorksLT_SalesOrderHeader",
+	"name": "output_ltconsultdemo_AW_SalesOrderHeader",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ltconsultdemo_AdventureWorksLT",
