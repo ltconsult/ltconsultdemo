@@ -62,15 +62,28 @@
 									"referenceName": "input_ltconsultdemo_AW",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema": "@item().TABLE_SCHEMA",
-										"table": "@item().TABLE_NAME"
+										"schema": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										},
+										"table": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
 									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "output_ltconsultdemo_AW",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"folder": "landing_adventure_works",
+										"file_name": {
+											"value": "@item().FILE_NAME",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
