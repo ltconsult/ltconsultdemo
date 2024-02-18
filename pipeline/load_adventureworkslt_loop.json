@@ -62,8 +62,8 @@
 									"referenceName": "input_ltconsultdemo_AW",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema": "@item().shema_name",
-										"table": "@item().table_name"
+										"schema": "@item().TABLE_SCHEMA",
+										"table": "@item().TABLE_NAME"
 									}
 								}
 							],
@@ -103,7 +103,8 @@
 							"schema": "INFORMATION_SCHEMA",
 							"table": "TABLES"
 						}
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
