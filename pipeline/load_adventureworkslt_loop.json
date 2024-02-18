@@ -15,6 +15,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup-For-AdventureWorksLT').output.value",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "load_adventureworkslt_full",
@@ -56,7 +60,11 @@
 							"inputs": [
 								{
 									"referenceName": "input_ltconsultdemo_AW",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"schema": "@item().shema_name",
+										"table": "@item().table_name"
+									}
 								}
 							],
 							"outputs": [
